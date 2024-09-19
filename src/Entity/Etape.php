@@ -27,6 +27,10 @@ class Etape
     #[ORM\JoinColumn(nullable: false)]
     private ?Element $element = null;
 
+    #[ORM\ManyToOne(inversedBy: 'etapes')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?TypeEtape $typeEtape = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -76,6 +80,18 @@ class Etape
     public function setElement(?Element $element): static
     {
         $this->element = $element;
+
+        return $this;
+    }
+
+    public function getTypeEtape(): ?TypeEtape
+    {
+        return $this->typeEtape;
+    }
+
+    public function setTypeEtape(?TypeEtape $typeEtape): static
+    {
+        $this->typeEtape = $typeEtape;
 
         return $this;
     }
