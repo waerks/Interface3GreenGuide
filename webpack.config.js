@@ -21,6 +21,12 @@ Encore
         config.corejs = '3.23';
     })
     .enableSassLoader()
-    .addPlugin(new MiniCssExtractPlugin({ filename: 'styles.css' }));
+    .addPlugin(new MiniCssExtractPlugin({ filename: 'styles.css' }))
+
+    .copyFiles({
+        from: './assets/images',  // Dossier source
+        to: 'images/[path][name].[ext]',  // Destination dans build
+        pattern: /\.(png|jpg|jpeg|gif|ico|svg)$/  // Extensions à inclure
+    });
 
 module.exports = Encore.getWebpackConfig();

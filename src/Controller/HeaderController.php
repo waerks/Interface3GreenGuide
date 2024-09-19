@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class HeaderController extends AbstractController
 {
-    #[Route('/header', name: 'app_header')]
+    #[Route('/header', name: 'header')]
     public function index(): Response
     {
         return $this->render('header/header.html.twig');

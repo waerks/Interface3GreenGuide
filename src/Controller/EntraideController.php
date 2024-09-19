@@ -8,11 +8,9 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class EntraideController extends AbstractController
 {
-    #[Route('/entraide', name: 'app_entraide')]
+    #[Route('/entraide', name: 'entraide')]
     public function index(): Response
     {
-        return $this->render('entraide/index.html.twig', [
-            'controller_name' => 'EntraideController',
-        ]);
+        return $this->render('entraide/entraide.html.twig');
     }
 }
