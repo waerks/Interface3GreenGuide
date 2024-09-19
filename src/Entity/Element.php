@@ -87,6 +87,18 @@ class Element
     #[ORM\ManyToMany(targetEntity: self::class, mappedBy: 'ennemi')]
     private Collection $elementsEnnemis;
 
+    /**
+     * @var Collection<int, TypeElement>
+     */
+    #[ORM\ManyToMany(targetEntity: TypeElement::class, inversedBy: 'elements')]
+    private Collection $typeElement;
+
+    /**
+     * @var Collection<int, Etape>
+     */
+    #[ORM\OneToMany(targetEntity: Etape::class, mappedBy: 'element', orphanRemoval: true)]
+    private Collection $etape;
+
     public function __construct()
     {
         $this->recettes = new ArrayCollection();
@@ -94,6 +106,8 @@ class Element
         $this->elementsAmis = new ArrayCollection();
         $this->ennemi = new ArrayCollection();
         $this->elementsEnnemis = new ArrayCollection();
+        $this->typeElement = new ArrayCollection();
+        $this->etape = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -381,6 +395,60 @@ class Element
     {
         if ($this->elementsEnnemis->removeElement($elementsEnnemi)) {
             $elementsEnnemi->removeEnnemi($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, TypeElement>
+     */
+    public function getTypeElement(): Collection
+    {
+        return $this->typeElement;
+    }
+
+    public function addTypeElement(TypeElement $typeElement): static
+    {
+        if (!$this->typeElement->contains($typeElement)) {
+            $this->typeElement->add($typeElement);
+        }
+
+        return $this;
+    }
+
+    public function removeTypeElement(TypeElement $typeElement): static
+    {
+        $this->typeElement->removeElement($typeElement);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Etape>
+     */
+    public function getEtape(): Collection
+    {
+        return $this->etape;
+    }
+
+    public function addEtape(Etape $etape): static
+    {
+        if (!$this->etape->contains($etape)) {
+            $this->etape->add($etape);
+            $etape->setElement($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEtape(Etape $etape): static
+    {
+        if ($this->etape->removeElement($etape)) {
+            // set the owning side to null (unless already changed)
+            if ($etape->getElement() === $this) {
+                $etape->setElement(null);
+            }
         }
 
         return $this;
