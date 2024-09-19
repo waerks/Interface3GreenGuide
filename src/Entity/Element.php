@@ -61,9 +61,39 @@ class Element
     #[ORM\ManyToMany(targetEntity: Recette::class, mappedBy: 'element')]
     private Collection $recettes;
 
+    /**
+     * @var Collection<int, self>
+     */
+    #[ORM\ManyToMany(targetEntity: self::class, inversedBy: 'elementsAmis')]
+    #[ORM\JoinTable(name: 'element_ami')]
+    private Collection $ami;
+
+    /**
+     * @var Collection<int, self>
+     */
+    #[ORM\ManyToMany(targetEntity: self::class, mappedBy: 'ami')]
+    private Collection $elementsAmis;
+
+    /**
+     * @var Collection<int, self>
+     */
+    #[ORM\ManyToMany(targetEntity: self::class, inversedBy: 'elementsEnnemis')]
+    #[ORM\JoinTable(name: 'element_ennemi')]
+    private Collection $ennemi;
+
+    /**
+     * @var Collection<int, self>
+     */
+    #[ORM\ManyToMany(targetEntity: self::class, mappedBy: 'ennemi')]
+    private Collection $elementsEnnemis;
+
     public function __construct()
     {
         $this->recettes = new ArrayCollection();
+        $this->ami = new ArrayCollection();
+        $this->elementsAmis = new ArrayCollection();
+        $this->ennemi = new ArrayCollection();
+        $this->elementsEnnemis = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -249,6 +279,108 @@ class Element
     {
         if ($this->recettes->removeElement($recette)) {
             $recette->removeElement($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, self>
+     */
+    public function getAmi(): Collection
+    {
+        return $this->ami;
+    }
+
+    public function addAmi(self $ami): static
+    {
+        if (!$this->ami->contains($ami)) {
+            $this->ami->add($ami);
+        }
+
+        return $this;
+    }
+
+    public function removeAmi(self $ami): static
+    {
+        $this->ami->removeElement($ami);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, self>
+     */
+    public function getElementsAmis(): Collection
+    {
+        return $this->elementsAmis;
+    }
+
+    public function addElementsAmi(self $elementsAmi): static
+    {
+        if (!$this->elementsAmis->contains($elementsAmi)) {
+            $this->elementsAmis->add($elementsAmi);
+            $elementsAmi->addAmi($this);
+        }
+
+        return $this;
+    }
+
+    public function removeElementsAmi(self $elementsAmi): static
+    {
+        if ($this->elementsAmis->removeElement($elementsAmi)) {
+            $elementsAmi->removeAmi($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, self>
+     */
+    public function getEnnemi(): Collection
+    {
+        return $this->ennemi;
+    }
+
+    public function addEnnemi(self $ennemi): static
+    {
+        if (!$this->ennemi->contains($ennemi)) {
+            $this->ennemi->add($ennemi);
+        }
+
+        return $this;
+    }
+
+    public function removeEnnemi(self $ennemi): static
+    {
+        $this->ennemi->removeElement($ennemi);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, self>
+     */
+    public function getElementsEnnemis(): Collection
+    {
+        return $this->elementsEnnemis;
+    }
+
+    public function addElementsEnnemi(self $elementsEnnemi): static
+    {
+        if (!$this->elementsEnnemis->contains($elementsEnnemi)) {
+            $this->elementsEnnemis->add($elementsEnnemi);
+            $elementsEnnemi->addEnnemi($this);
+        }
+
+        return $this;
+    }
+
+    public function removeElementsEnnemi(self $elementsEnnemi): static
+    {
+        if ($this->elementsEnnemis->removeElement($elementsEnnemi)) {
+            $elementsEnnemi->removeEnnemi($this);
         }
 
         return $this;
