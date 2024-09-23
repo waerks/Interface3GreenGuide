@@ -1,7 +1,42 @@
 {% include "header/header.html.twig" %}
 
 
-<h1>Page Recette</h1>
+<section>
+    <div class="container">
+        <section id="recetteFiltre">
+            <h2>Les recettes</h2>
+            <div class="divRecherche">
+                <input type="text" name="newsletters" id="input">
+                <button type="submit" id="mainBtn">
+                    <a href="#rechercher">Rechercher</a>
+                </button>
+            </div>
+            <div class="divTri">       
+                <button type="submit" id="mainBtn">
+                    <a href="{{ path('recette_ajouter')}}">Poster une recette</a>
+                </button>
+                <button type="submit" id="secondBtn">
+                    <a href="">Trier et afficher</a>
+                </button>
+            </div>
+        </section>
+        <section id="recette">
+                <a id="cardRecette" href="{{ path('recette_detail')}}">
+                <span><img src="{{ asset('./images/images/default.png')}}" alt=""></span>
+                <div class="cardInfo">
+                <div class="divLeft">
+                <h4>Tarte aux pommes</h4>
+                <p>nanais._</p>
+                </div>
+                <div class="divRight">
+                <p>52</p>
+                <span><img src="{{ asset('./images/logo/icons/coeur.png')}}" alt="Like"></span>
+                </div>
+                </div>
+                </a>
+        </section>
+    </div>
+</section>
 
 
 {% include "footer/footer.html.twig" %}

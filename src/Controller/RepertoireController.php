@@ -13,4 +13,10 @@ class RepertoireController extends AbstractController
     {
         return $this->render('repertoire/repertoire.html.twig');
     }
+
+    #[Route('/repertoire/detail', name: 'repertoire_detail')]
+    public function detail(): Response
+    {
+        return $this->render('repertoire/repertoire_detail.html.twig');
+    }
 }

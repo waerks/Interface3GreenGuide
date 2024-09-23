@@ -1,0 +1,95 @@
+{% include "header/header.html.twig" %}
+
+
+<section>
+    <div class="container">
+        <section id="recetteDImg">
+            <span>
+                <img src="{{ asset('./images/images/default.png')}}" alt="">
+            </span>
+            <div class="divPost">
+                <p>Posté par <span>nanais._</span></p>
+                <div class="divLike">
+                    <p>52</p>
+                    <button id="like" type="submit"><img src="{{ asset('./images/logo/icons/coeur vide.png')}}" alt=""></button>
+                </div>
+            </div>
+        </section>
+        <section id="recetteDetail">
+            <div class="divTitre">
+                <h2>Tartes aux pommes</h2>
+            </div>
+            <div class="divInfos">
+                <p><b>Temps de préparation : </b><span>10</span> minutes</p>
+                <p><b>Temps de cuisson : </b><span>25</span> minutes</p>
+                <p><b>Temps total : </b><span>35</span> minutes</p>
+            </div>
+            <div class="divIngredients">
+                <div class="divNbre">
+                    <h3>Ingrédients</h3>
+                    <p><span>6</span> personnes</p>
+                </div>
+                <hr>
+                <div class="divListe">
+                    <ul>
+                        <li>
+                            <p>Pâte sablée</p>
+                        </li>
+                        <li>
+                            <p>3 oeufs</p>
+                        </li>
+                        <li>
+                            <p>20cl de crème liquide</p>
+                        </li>
+                        <li>
+                            <p>1 sachet de sucre vanillé</p>
+                        </li>
+                        <li>
+                            <p>3 pommes</p>
+                        </li>
+                        <li>
+                            <p>3 càs de sucre</p>
+                        </li>
+                        <li>
+                            <p>1 pincée de cannelle</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="divPreparation">
+                <div class="divNbre">
+                    <h3>Préparation</h3>
+                </div>
+                <hr>
+                <div class="divListe">
+                    <ol>
+                        <li>
+                            <p>Déroulez, étalez et piquez la pâte dans un moule à tarte. Pelez, videz et coupez en fines tranches les pommes. Posez-les sur la pâte en rosace.
+                            </p>
+                        </li>
+                        <li>
+                            <p>Dans un saladier, battez les œufs avec le sucre, puis ajoutez la crème et la cannelle. Versez le mélange sur les pommes.
+                            </p>
+                        </li>
+                        <li>
+                            <p>Mettez au four à 210°C (thermostat 7) pour 40 minutes environ. Vers la fin de la cuisson, répartissez sur la tarte le sucre vanillé et remettez au four pour caramélisé.
+                            </p>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <div class="divConseil">
+                <div class="divNbre">
+                    <h3>Conseil</h3>
+                </div>
+                <hr>
+                <div class="divListe">
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rerum nemo similique eius voluptates obcaecati nihil laboriosam, adipisci porro placeat sunt iste? Perferendis optio cumque eaque tempore voluptatem perspiciatis quo cupiditate!</p>
+                </div>
+            </div>
+        </section>
+    </div>
+</section>
+
+
+{% include "footer/footer.html.twig" %}

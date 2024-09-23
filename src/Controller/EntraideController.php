@@ -13,4 +13,14 @@ class EntraideController extends AbstractController
     {
         return $this->render('entraide/entraide.html.twig');
     }
+    #[Route('/entraide/detail', name: 'entraide_detail')]
+    public function detail(): Response
+    {
+        return $this->render('entraide/entraide_detail.html.twig');
+    }
+    #[Route('/entraide/ajouter', name: 'entraide_ajouter')]
+    public function ajouter(): Response
+    {
+        return $this->render('entraide/entraide_ajouter.html.twig');
+    }
 }

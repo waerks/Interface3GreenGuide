@@ -1,7 +1,45 @@
 {% include "header/header.html.twig" %}
 
 
-<h1>Page Entraide</h1>
+<section>
+    <div class="container">
+        <section id="entraideFiltre">
+            <h2>S'entraider, c'est la clé !</h2>
+            <div class="divRecherche">
+                <input type="text" name="newsletters" id="input">
+                <button type="submit" id="mainBtn">
+                    <a href="#rechercher">Rechercher</a>
+                </button>
+            </div>
+            <div class="divTri">       
+                <button type="submit" id="mainBtn">
+                    <a href="{{path('entraide_ajouter')}}">Poser une question</a>
+                </button>
+                <button type="submit" id="secondBtn">
+                    <a href="">Trier et afficher</a>
+                </button>
+            </div>
+        </section>
+        <section id="entraide">
+            <a id="cardEntraide" href="{{path('entraide_detail')}}">
+                <div class="divAuteur">
+                    <h5>nanais._</h5>
+                    <p>Posté le <span>12/08/24</span></p>
+                </div>
+                <div class="divTitreQ">
+                    <h4>Pourquoi mes tomates ne rougissent pas ?</h4>
+                </div>
+                <div class="divImg">
+                    <img src="{{ asset('./images/images/default.png')}}" alt="Aide image">
+                </div>
+                <div class="divInfos">
+                    <p><span><img src="{{ asset('./images/logo/icons/bulle.png')}}" alt="Commentaire"></span> 0</p>
+                    <p>Pas répondu <span><img src="{{ asset('./images/logo/icons/non.png')}}" alt="Pas répondu"></span></p>
+                </div>
+            </a>
+        </section>
+    </div>
+</section>
 
 
 {% include "footer/footer.html.twig" %}

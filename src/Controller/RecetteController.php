@@ -13,4 +13,14 @@ class RecetteController extends AbstractController
     {
         return $this->render('recette/recette.html.twig');
     }
+    #[Route('/recette/detail', name: 'recette_detail')]
+    public function detail(): Response
+    {
+        return $this->render('recette/recette_detail.html.twig');
+    }
+    #[Route('/recette/poster', name: 'recette_ajouter')]
+    public function ajouter(): Response
+    {
+        return $this->render('recette/recette_ajouter.html.twig');
+    }
 }
