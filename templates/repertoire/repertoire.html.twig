@@ -24,7 +24,7 @@
         </section>
         <section id="repertoire">
         {% for item in element %}
-                <a id="cardRepertoire" href="{{ path('repertoire_detail')}}">
+                <a id="cardRepertoire" href="{{ path('repertoire_detail', { 'nom': item.nom })}}">
                     {% for type in item.typeElement %}
                     <span><img src="{{ asset('/build/images/photosPlantes/' ~ type.nom ~ '/' ~ item.image)}}" alt="{{ item.nom }}"></span>
                     <div class="cardInfo">
