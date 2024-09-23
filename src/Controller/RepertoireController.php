@@ -2,16 +2,31 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\Element;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class RepertoireController extends AbstractController
 {
+    private $doctrine;
+
+    public function __construct(ManagerRegistry $doctrine)
+    {
+        $this->doctrine = $doctrine;
+    }
     #[Route('/repertoire', name: 'repertoire')]
     public function index(): Response
     {
-        return $this->render('repertoire/repertoire.html.twig');
+        $element = $this->doctrine->getRepository(Element::class)->findAll();
+
+        $vars = [
+            'element' => $element
+        ];
+
+
+        return $this->render('repertoire/repertoire.html.twig', $vars);
     }
 
     #[Route('/repertoire/detail', name: 'repertoire_detail')]

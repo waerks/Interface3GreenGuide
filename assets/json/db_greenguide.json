@@ -1,0 +1,221 @@
+{
+    "0": {
+        "id": 0,
+        "nom": "Ail",
+        "nomscientifique": "Allium sativum",
+        "famille": "Alliaceae",
+        "hauteur": "30 à 60 cm",
+        "sol": "Sol léger, bien drainé, et fertile",
+        "categorie": "legume",
+        "image": "ail.png",
+        "resume": "L'ail est un légume bulbeux apprécié pour sa saveur piquante et ses propriétés médicinales. Il est largement utilisé dans les cuisines du monde entier.",
+        "semis": {
+            "mois": [
+                "octobre", "novembre"
+            ],
+            "periode": "Automne",
+            "instruction": "Plantez les gousses à environ 3-4 cm de profondeur, avec la pointe vers le haut."
+        },
+        "plantation": {
+            "mois": [
+                "février", "mars"
+            ],
+            "periode": "Fin hiver à début printemps",
+            "instruction": "Plantez les gousses d'ail à 10-15 cm de distance dans un sol bien drainé."
+        },
+        "recolte": {
+            "mois": [
+                "juin", "juillet", "août"
+            ],
+            "periode": "Été",
+            "instruction": "Récoltez lorsque les feuilles commencent à jaunir et à se faner."
+        },
+        "entretien": "Arrosez régulièrement mais sans excès, surtout en période sèche. Désherbez le sol autour des plants pour éviter la concurrence des mauvaises herbes.",
+        "rotationdescultures": "Évitez de planter l'ail dans des sols où d'autres membres de la famille des Alliums (oignons, poireaux) ont été cultivés récemment.",
+        "plantesamies": [
+            "Tomate", "Carotte", "Fraisier"
+        ],
+        "plantesenemies": [
+            "Haricot", "Pois"
+        ],
+        "conservation": "L'ail se conserve bien dans un endroit sec, frais et bien aéré. Il peut également être tressé et suspendu pour le stockage.",
+        "benefices": "L'ail est connu pour ses propriétés antibactériennes, antivirales et antifongiques. Il est également riche en antioxydants et bon pour la santé cardiovasculaire.",
+        "contreindication": "L'ail peut causer des brûlures d'estomac ou une irritation de l'estomac chez certaines personnes. Il est également à éviter en grande quantité avant une intervention chirurgicale en raison de son effet anticoagulant.",
+        "informationsnutritionnelles": "L'ail est riche en vitamines C et B6, en manganèse, et contient également des traces de sélénium et de fibres. Il est faible en calories."
+    },
+    "1": {
+        "id": 1,
+        "nom": "Artichaut",
+        "nomscientifique": "Cynara scolymus",
+        "famille": "Asteraceae",
+        "hauteur": "1 à 2 mètres",
+        "sol": "Sol fertile, bien drainé, et riche en matière organique",
+        "categorie": "legume",
+        "image": "artichaut.png",
+        "resume": "L'artichaut est une plante vivace connue pour ses gros bourgeons comestibles, qui sont récoltés avant la floraison. Il est riche en fibres et en antioxydants.",
+        "semis": {
+            "mois": [
+                "mars", "avril"
+            ],
+            "periode": "Printemps",
+            "instruction": "Semis en intérieur ou en serre, repiquez les jeunes plants en pleine terre après les dernières gelées."
+        },
+        "plantation": {
+            "mois": [
+                "mai", "juin"
+            ],
+            "periode": "Fin printemps à début été",
+            "instruction": "Plantez les artichauts dans un endroit ensoleillé avec suffisamment d'espace pour leur croissance (environ 1 mètre entre les plants)."
+        },
+        "recolte": {
+            "mois": [
+                "juin", "juillet", "août"
+            ],
+            "periode": "Été",
+            "instruction": "Récoltez les têtes d'artichaut lorsqu'elles sont encore fermées, avant qu'elles ne commencent à fleurir."
+        },
+        "entretien": "Arrosez régulièrement, surtout en période sèche. Évitez de mouiller le feuillage pour prévenir les maladies. Paillez les plants pour conserver l'humidité et limiter les mauvaises herbes.",
+        "rotationdescultures": "L'artichaut étant une plante vivace, il est recommandé de le cultiver sur un emplacement fixe pendant plusieurs années, en veillant à ne pas le planter après d'autres plantes de la famille des Asteraceae.",
+        "plantesamies": [
+            "Haricot", "Laitue", "Pois"
+        ],
+        "plantesenemies": [
+            "Ail", "Oignon"
+        ],
+        "conservation": "Les artichauts frais se conservent quelques jours au réfrigérateur. Pour une conservation plus longue, ils peuvent être blanchis et congelés.",
+        "benefices": "L'artichaut est riche en fibres, en antioxydants, et en vitamines C et K. Il favorise la digestion et aide à maintenir un taux de cholestérol sain.",
+        "contreindication": "L'artichaut est généralement bien toléré, mais peut causer des troubles digestifs chez certaines personnes sensibles aux fructanes.",
+        "informationsnutritionnelles": "L'artichaut est faible en calories, riche en fibres, et contient des vitamines C, K, et du magnésium. C'est aussi une source d'antioxydants."
+    },
+    "2": {
+        "id": 2,
+        "nom": "Asperge",
+        "nomscientifique": "Asparagus officinalis",
+        "famille": "Asparagaceae",
+        "hauteur": "1 à 1,5 mètres",
+        "sol": "Sol sableux, bien drainé, riche en matière organique",
+        "categorie": "legume",
+        "image": "asperge.jpeg",
+        "resume": "L'asperge est une plante vivace cultivée pour ses jeunes pousses tendres. Elle est appréciée pour sa saveur délicate et ses bienfaits pour la santé.",
+        "semis": {
+            "mois": [
+                "mars", "avril"
+            ],
+            "periode": "Printemps",
+            "instruction": "Semis en pépinière, repiquage en pleine terre après un an. Les asperges peuvent aussi être plantées par griffes."
+        },
+        "plantation": {
+            "mois": [
+                "avril", "mai"
+            ],
+            "periode": "Printemps",
+            "instruction": "Plantez les griffes d'asperge dans des tranchées profondes de 20 à 25 cm, en espaçant chaque griffe de 30 à 40 cm."
+        },
+        "recolte": {
+            "mois": [
+                "avril", "mai", "juin"
+            ],
+            "periode": "Printemps à début été",
+            "instruction": "Récoltez les turions lorsqu'ils atteignent 20 à 25 cm de hauteur, avant que les tiges ne deviennent ligneuses."
+        },
+        "entretien": "Arrosez régulièrement, surtout en période sèche. Paillez le sol pour conserver l'humidité. Coupez les tiges après la récolte et fertilisez pour encourager la croissance l'année suivante.",
+        "rotationdescultures": "L'asperge étant une culture pérenne, elle doit être plantée dans un emplacement fixe pour plusieurs années.",
+        "plantesamies": [
+            "Carotte", "Tomate", "Persil"
+        ],
+        "plantesenemies": [
+            "Ail", "Oignon"
+        ],
+        "conservation": "Les asperges se conservent quelques jours au réfrigérateur. Elles peuvent aussi être blanchies et congelées pour une conservation plus longue.",
+        "benefices": "Les asperges sont faibles en calories, riches en vitamines K, C, et en folates. Elles sont également diurétiques et favorisent la santé digestive.",
+        "contreindication": "Les asperges peuvent causer des ballonnements ou une odeur particulière de l'urine chez certaines personnes.",
+        "informationsnutritionnelles": "L'asperge est riche en fibres, en vitamines A, C, E, et K, et contient du folate, du fer, du cuivre, du calcium, et des antioxydants."
+    },
+    "3": {
+        "id": 3,
+        "nom": "Aubergine",
+        "nomscientifique": "Solanum melongena",
+        "famille": "Solanaceae",
+        "hauteur": "50 à 80 cm",
+        "sol": "Sol riche, bien drainé, et légèrement acide",
+        "categorie": "legume",
+        "image": "aubergine.jpg",
+        "resume": "L'aubergine est un légume-fruit apprécié pour sa chair tendre et savoureuse. Originaire d'Asie, elle est largement utilisée dans les cuisines méditerranéennes et asiatiques.",
+        "semis": {
+            "mois": [
+                "février", "mars"
+            ],
+            "periode": "Fin hiver à début printemps",
+            "instruction": "Semis en intérieur ou sous serre à une température d'environ 20-25°C. Repiquage en pleine terre après les dernières gelées."
+        },
+        "plantation": {
+            "mois": [
+                "mai", "juin"
+            ],
+            "periode": "Printemps à début été",
+            "instruction": "Plantez les aubergines dans un endroit ensoleillé, à environ 50 cm de distance entre les plants."
+        },
+        "recolte": {
+            "mois": [
+                "juillet", "août", "septembre"
+            ],
+            "periode": "Été à début automne",
+            "instruction": "Récoltez les fruits lorsqu'ils sont brillants et fermes, avant que les graines ne soient trop développées."
+        },
+        "entretien": "Arrosez régulièrement, en évitant de mouiller le feuillage pour prévenir les maladies. Paillez le sol pour maintenir l'humidité. Taillez les plants pour encourager la production de fruits.",
+        "rotationdescultures": "Évitez de planter les aubergines après d'autres Solanacées (comme les tomates ou les pommes de terre) pour prévenir les maladies liées au sol.",
+        "plantesamies": [
+            "Haricot", "Basilic", "Poivron"
+        ],
+        "plantesenemies": ["Fenouil"],
+        "conservation": "Les aubergines fraîches se conservent quelques jours au réfrigérateur. Évitez de les stocker à des températures trop basses pour ne pas altérer leur texture.",
+        "benefices": "L'aubergine est faible en calories, riche en fibres, et contient des antioxydants qui aident à protéger les cellules du corps. Elle favorise une bonne digestion.",
+        "contreindication": "Les aubergines contiennent des solanines, qui peuvent être toxiques à haute dose, mais sont généralement sans danger lorsqu'elles sont consommées en quantités normales.",
+        "informationsnutritionnelles": "L'aubergine est une source de fibres alimentaires, de vitamines B1, B6, et K, et contient également du manganèse, du cuivre, et des antioxydants comme les anthocyanines."
+    },
+    "4": {
+        "id": 4,
+        "nom": "Blette",
+        "nomscientifique": "Beta vulgaris subsp. cicla",
+        "famille": "Chenopodiaceae",
+        "hauteur": "30 à 60 cm",
+        "sol": "Sol riche, bien drainé, et légèrement acide à neutre",
+        "categorie": "legume",
+        "image": "blette.jpeg",
+        "resume": "La blette, également appelée bette, est un légume-feuille apprécié pour ses larges feuilles vertes et ses côtes charnues. Elle est très nutritive et se cultive facilement.",
+        "semis": {
+            "mois": [
+                "mars", "avril"
+            ],
+            "periode": "Printemps",
+            "instruction": "Semis direct en pleine terre, éclaircir les plants à environ 30 cm d'intervalle."
+        },
+        "plantation": {
+            "mois": [
+                "mai", "juin"
+            ],
+            "periode": "Printemps à début été",
+            "instruction": "Transplantation des jeunes plants semés en pépinière, en laissant environ 30-40 cm entre les plants."
+        },
+        "recolte": {
+            "mois": [
+                "juin", "juillet", "août"
+            ],
+            "periode": "Été",
+            "instruction": "Récoltez les feuilles extérieures au fur et à mesure de leurs besoins, les jeunes feuilles étant plus tendres."
+        },
+        "entretien": "Arrosez régulièrement pour maintenir le sol humide. Paillez le sol pour conserver l'humidité et éviter la concurrence des mauvaises herbes. Coupez les fleurs dès leur apparition pour favoriser la croissance des feuilles.",
+        "rotationdescultures": "Évitez de planter les blettes après d'autres légumes racines ou feuilles de la même famille (comme les betteraves ou les épinards).",
+        "plantesamies": [
+            "Haricot", "Carotte", "Laitue"
+        ],
+        "plantesenemies": [
+            "Poireau", "Oignon"
+        ],
+        "conservation": "Les blettes fraîches se conservent quelques jours au réfrigérateur. Pour une conservation plus longue, elles peuvent être blanchies et congelées.",
+        "benefices": "La blette est riche en vitamines K, A, et C, en fibres, et en minéraux comme le fer et le magnésium. Elle a des propriétés antioxydantes et anti-inflammatoires.",
+        "contreindication": "Les personnes sujettes aux calculs rénaux devraient consommer les blettes avec modération en raison de leur teneur en oxalates.",
+        "informationsnutritionnelles": "La blette est faible en calories, riche en fibres, et contient des vitamines A, C, et K, ainsi que des minéraux comme le magnésium, le potassium, et le fer."
+    }
+
+}

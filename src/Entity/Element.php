@@ -411,7 +411,7 @@ class Element
     public function addTypeElement(TypeElement $typeElement): static
     {
         if (!$this->typeElement->contains($typeElement)) {
-            $this->typeElement->add($typeElement);
+            $this->typeElement[] = $typeElement;
         }
 
         return $this;
