@@ -140,7 +140,7 @@ class ImportJsonCommand extends Command
                 $element->setConservation($itemData['conservation']);
                 $element->setBenefices($itemData['benefices']);
                 $element->setContreIndication($itemData['contreindication']);
-                $element->setInformationsNutrtionnelles($itemData['informationsnutritionnelles']);
+                $element->setInformationsNutritionnelles($itemData['informationsnutritionnelles']);
 
                 $em->persist($element);
             }

@@ -259,14 +259,14 @@ class Element
         return $this;
     }
 
-    public function getInformationsNutrtionnelles(): ?string
+    public function getInformationsNutritionnelles(): ?string
     {
         return $this->informationsNutritionnelles;
     }
 
-    public function setInformationsNutrtionnelles(string $informationsNutrtionnelles): static
+    public function setInformationsNutritionnelles(string $informationsNutritionnelles): static
     {
-        $this->informationsNutritionnelles = $informationsNutrtionnelles;
+        $this->informationsNutritionnelles = $informationsNutritionnelles;
 
         return $this;
     }

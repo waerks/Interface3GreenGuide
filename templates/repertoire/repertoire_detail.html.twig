@@ -1,10 +1,13 @@
 {% include "header/header.html.twig" %}
 
+
 <section>
     <div class="container">
         <section id="repertoireDImg">
             <span>
-                <img src="{{ asset('/build/images/images/default.png')}}" alt="Default">
+        {% for type in element.typeElement %}
+            <img src="{{ asset('/build/images/photosPlantes/' ~ type.nom ~ '/' ~ element.image) }}" alt="{{ element.nom }}">
+        {% endfor %}
             </span>
         </section>
         <section id="repertoireDetail">
@@ -33,81 +36,30 @@
                     <p id="sol"><b>Sol : </b><span>{{ element.sol }}</span></p>
                 </div>
             </div>
-            <div class="divSemis">
-                <div class="divTitreInfo">
-                    <h3>Semis</h3>
-                    <span><img src="{{ asset('/build/images/logo/icons/semis.png')}}" alt="Semis"></span>
+            {% for etape in element.etape %}
+
+                <div class="div{{etape.typeEtape.nom|capitalize}}">
+                    <div class="divTitreInfo">
+                        <h3>{{etape.typeEtape.nom|capitalize}}</h3>
+                        <span><img src="{{ asset('/build/images/logo/icons/' ~ etape.typeEtape.nom ~ '.png')}}" alt="{{etape.typeEtape.nom}}"></span>
+                    </div>
+                    <hr>
+                    <div class="divTabInfo">
+                        <p id="periode"><b>Période : </b><span>{{etape.periode}}</span></p>
+                        <table>
+                            {% set moisArray = ['janvier', 'fevrier', 'mars', 'avril', 'mai', 'juin', 'juillet', 'aout', 'septembre', 'octobre', 'novembre', 'decembre'] %}
+
+                            {% for mois in moisArray %}
+                                <td id="{{ mois }}" class="{% if mois in etape.mois %}moisActif{% endif %}">
+                                    <p>{{ mois|first|upper }}</p>
+                                </td>
+                            {% endfor %}
+                        </table>
+                        <p id="instructions"><b>Instructions : </b><span>{{etape.instructions}}</span></p>
+                    </div>
                 </div>
-                <hr>
-                <div class="divTabInfo">
-                    <p id="periode"><b>Période : </b><span>Default</span></p>
-                    <table>
-                        <td id="janvier"><p>J</p></td>
-                        <td id="fevrier"><p>F</p></td>
-                        <td id="mars"><p>M</p></td>
-                        <td id="avril"><p>A</p></td>
-                        <td id="mai"><p>M</p></td>
-                        <td id="juin"><p>J</p></td>
-                        <td id="juillet"><p>J</p></td>
-                        <td id="aout"><p>A</p></td>
-                        <td id="septembre"><p>S</p></td>
-                        <td id="octobre"><p>O</p></td>
-                        <td id="novembre"><p>N</p></td>
-                        <td id="decembre"><p>D</p></td>
-                    </table>
-                    <p id="instructions"><b>Instructions : </b><span>Default</span></p>
-                </div>
-            </div>
-            <div class="divPlantation">
-                <div class="divTitreInfo">
-                    <h3>Plantation</h3>
-                    <span><img src="{{ asset('/build/images/logo/icons/plantation.png')}}" alt="Plantation"></span>
-                </div>
-                <hr>
-                <div class="divTabInfo">
-                    <p id="periode"><b>Période : </b><span>Default</span></p>
-                    <table>
-                        <td id="janvier"><p>J</p></td>
-                        <td id="fevrier"><p>F</p></td>
-                        <td id="mars"><p>M</p></td>
-                        <td id="avril"><p>A</p></td>
-                        <td id="mai"><p>M</p></td>
-                        <td id="juin"><p>J</p></td>
-                        <td id="juillet"><p>J</p></td>
-                        <td id="aout"><p>A</p></td>
-                        <td id="septembre"><p>S</p></td>
-                        <td id="octobre"><p>O</p></td>
-                        <td id="novembre"><p>N</p></td>
-                        <td id="decembre"><p>D</p></td>
-                    </table>
-                    <p id="instructions"><b>Instructions : </b><span>Default</span></p>
-                </div>
-            </div>
-            <div class="divRecolte">
-                <div class="divTitreInfo">
-                    <h3>Récolte</h3>
-                    <span><img src="{{ asset('/build/images/logo/icons/recolte.png')}}" alt="Récolte"></span>
-                </div>
-                <hr>
-                <div class="divTabInfo">
-                    <p id="periode"><b>Période : </b><span>Default</span></p>
-                    <table>
-                        <td id="janvier"><p>J</p></td>
-                        <td id="fevrier"><p>F</p></td>
-                        <td id="mars"><p>M</p></td>
-                        <td id="avril"><p>A</p></td>
-                        <td id="mai"><p>M</p></td>
-                        <td id="juin"><p>J</p></td>
-                        <td id="juillet"><p>J</p></td>
-                        <td id="aout"><p>A</p></td>
-                        <td id="septembre"><p>S</p></td>
-                        <td id="octobre"><p>O</p></td>
-                        <td id="novembre"><p>N</p></td>
-                        <td id="decembre"><p>D</p></td>
-                    </table>
-                    <p id="instructions"><b>Instructions : </b><span>Default</span></p>
-                </div>
-            </div>
+                
+            {% endfor %}
             <div class="divDuo">
                 <div class="divEntretien">
                     <div class="divTitreInfo">
@@ -139,9 +91,11 @@
                     <hr>
                     <div class="divText">
                         <ul>
-                            <li><p>amie</p></li>
-                            <li><p>amie</p></li>
-                            <li><p>amie</p></li>
+                            {% for ami in element.ami %}
+                                <li>{{ ami.nom }}</li>
+                            {% else %}
+                                <li>Aucun ami trouvé.</li>
+                            {% endfor %}
                         </ul>
                     </div>
                 </div>
@@ -153,9 +107,11 @@
                     <hr>
                     <div class="divText">
                         <ul>
-                            <li><p>ennemie</p></li>
-                            <li><p>ennemie</p></li>
-                            <li><p>ennemie</p></li>
+                            {% for ennemi in element.ennemi %}
+                                <li>{{ ennemi.nom }}</li>
+                            {% else %}
+                                <li>Aucun ennemi trouvé.</li>
+                            {% endfor %}
                         </ul>
                     </div>
                 </div>
@@ -188,7 +144,7 @@
                     </div>
                     <hr>
                     <div class="divText">
-                        {# <p>{{ element.informationsNutritionnelles }}</p> #}
+                        <p>{{ element.informationsNutritionnelles }}</p>
                     </div>
                 </div>
             </div>
