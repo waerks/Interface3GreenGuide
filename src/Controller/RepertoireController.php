@@ -32,12 +32,14 @@ class RepertoireController extends AbstractController
     #[Route('/repertoire/{nom}', name: 'repertoire_detail')]
     public function detail(string $nom): Response
     {
-        $element = $this->doctrine->getRepository(Element::class)->findAll();
+        $element = $this->doctrine->getRepository(Element::class)->findOneBy(['nom' => $nom]);
 
         $vars = [
             'element' => $element
         ];
 
-        return $this->render('repertoire/repertoire_detail.html.twig');
+        // dd($vars);
+
+        return $this->render('repertoire/repertoire_detail.html.twig', $vars);
     }
 }

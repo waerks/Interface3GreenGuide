@@ -1,43 +1,42 @@
 {% include "header/header.html.twig" %}
 
-
 <section>
     <div class="container">
         <section id="repertoireDImg">
             <span>
-                <img src="{{ asset('./images/images/default.png')}}" alt="Default">
+                <img src="{{ asset('/build/images/images/default.png')}}" alt="Default">
             </span>
         </section>
         <section id="repertoireDetail">
             <div class="divTitre">
-                <h2>Default</h2>
+                <h2>{{ element.nom }}</h2>
             </div>
             <div class="divInfo">
                 <div class="divnomS">
-                    <p><b>Nom scientifique : </b><span>Default</span></p>
+                    <p><b>Nom scientifique : </b><span>{{ element.nomscientifique }}</span></p>
                 </div>
                 <div class="divfamille">
-                    <p><b>Famille : </b><span>Default</span></p>
+                    <p><b>Famille : </b><span>{{ element.famille }}</span></p>
                 </div>
                 <div class="divhateur">
-                    <p><b>Hauteur : </b><span>Default</span></p>
+                    <p><b>Hauteur : </b><span>{{ element.hauteur }}</span></p>
                 </div>
             </div>
             <div class="divResume">
                 <div class="divTitreInfo">
                     <h3>Résumé</h3>
-                    <span><img src="{{ asset('./images/logo/icons/resume.png')}}" alt="Résumé"></span>
+                    <span><img src="{{ asset('/build/images/logo/icons/resume.png')}}" alt="Résumé"></span>
                 </div>
                 <hr>
                 <div class="divText">
-                    <p>Default</p>
-                    <p id="sol"><b>Sol : </b><span>Default</span></p>
+                    <p>{{ element.resume }}</p>
+                    <p id="sol"><b>Sol : </b><span>{{ element.sol }}</span></p>
                 </div>
             </div>
             <div class="divSemis">
                 <div class="divTitreInfo">
                     <h3>Semis</h3>
-                    <span><img src="{{ asset('./images/logo/icons/semis.png')}}" alt="Semis"></span>
+                    <span><img src="{{ asset('/build/images/logo/icons/semis.png')}}" alt="Semis"></span>
                 </div>
                 <hr>
                 <div class="divTabInfo">
@@ -62,7 +61,7 @@
             <div class="divPlantation">
                 <div class="divTitreInfo">
                     <h3>Plantation</h3>
-                    <span><img src="{{ asset('./images/logo/icons/plantation.png')}}" alt="Plantation"></span>
+                    <span><img src="{{ asset('/build/images/logo/icons/plantation.png')}}" alt="Plantation"></span>
                 </div>
                 <hr>
                 <div class="divTabInfo">
@@ -87,7 +86,7 @@
             <div class="divRecolte">
                 <div class="divTitreInfo">
                     <h3>Récolte</h3>
-                    <span><img src="{{ asset('./images/logo/icons/recolte.png')}}" alt="Récolte"></span>
+                    <span><img src="{{ asset('/build/images/logo/icons/recolte.png')}}" alt="Récolte"></span>
                 </div>
                 <hr>
                 <div class="divTabInfo">
@@ -113,21 +112,21 @@
                 <div class="divEntretien">
                     <div class="divTitreInfo">
                         <h3>Entretien</h3>
-                        <span><img src="{{ asset('./images/logo/icons/entretien.png')}}" alt="Récolte"></span>
+                        <span><img src="{{ asset('/build/images/logo/icons/entretien.png')}}" alt="Récolte"></span>
                     </div>
                     <hr>
                     <div class="divText">
-                        <p>Default</p>
+                        <p>{{ element.entretien }}</p>
                     </div>
                 </div>
                 <div class="divRotation">
                     <div class="divTitreInfo">
                         <h3>Rotation</h3>
-                        <span><img src="{{ asset('./images/logo/icons/rotation.png')}}" alt="Rotation"></span>
+                        <span><img src="{{ asset('/build/images/logo/icons/rotation.png')}}" alt="Rotation"></span>
                     </div>
                     <hr>
                     <div class="divText">
-                        <p>Default</p>
+                        <p>{{ element.rotationdescultures }}</p>
                     </div>
                 </div>
             </div>
@@ -135,7 +134,7 @@
                 <div class="divAmie">
                     <div class="divTitreInfo">
                         <h3>Plante amie</h3>
-                        <span><img src="{{ asset('./images/logo/icons/amie.png')}}" alt="Amie"></span>
+                        <span><img src="{{ asset('/build/images/logo/icons/amie.png')}}" alt="Amie"></span>
                     </div>
                     <hr>
                     <div class="divText">
@@ -149,7 +148,7 @@
                 <div class="divEnnemie">
                     <div class="divTitreInfo">
                         <h3>Plante ennemie</h3>
-                        <span><img src="{{ asset('./images/logo/icons/ennemie.png')}}" alt="Ennemie"></span>
+                        <span><img src="{{ asset('/build/images/logo/icons/ennemie.png')}}" alt="Ennemie"></span>
                     </div>
                     <hr>
                     <div class="divText">
@@ -164,43 +163,43 @@
             <div class="divConservation">
                 <div class="divTitreInfo">
                     <h3>Conservation</h3>
-                    <span><img src="{{ asset('./images/logo/icons/conservation.png')}}" alt="Conservation"></span>
+                    <span><img src="{{ asset('/build/images/logo/icons/conservation.png')}}" alt="Conservation"></span>
                 </div>
                 <hr>
                 <div class="divText">
-                    <p>Default</p>
+                    <p>{{ element.conservation }}</p>
                 </div>
             </div>
             <div class="divDuo">
                 <div class="divBenefice">
                     <div class="divTitreInfo">
                         <h3>Bénéfices</h3>
-                        <span><img src="{{ asset('./images/logo/icons/benefice.png')}}" alt="Bénéfices"></span>
+                        <span><img src="{{ asset('/build/images/logo/icons/benefice.png')}}" alt="Bénéfices"></span>
                     </div>
                     <hr>
                     <div class="divText">
-                        <p>Default</p>
+                        <p>{{ element.benefices }}</p>
                     </div>
                 </div>
                 <div class="divInfoNut">
                     <div class="divTitreInfo">
                         <h3>Informations nutritionnelles</h3>
-                        <span><img src="{{ asset('./images/logo/icons/nutrition.png')}}" alt="Contre indication"></span>
+                        <span><img src="{{ asset('/build/images/logo/icons/nutrition.png')}}" alt="Contre indication"></span>
                     </div>
                     <hr>
                     <div class="divText">
-                        <p>Default</p>
+                        {# <p>{{ element.informationsNutritionnelles }}</p> #}
                     </div>
                 </div>
             </div>
             <div class="divContre">
                 <div class="divTitreInfo">
                     <h3>Contre indication</h3>
-                    <span><img src="{{ asset('./images/logo/icons/contreindication.png')}}" alt="Contre indication"></span>
+                    <span><img src="{{ asset('/build/images/logo/icons/contreindication.png')}}" alt="Contre indication"></span>
                 </div>
                 <hr>
                 <div class="divText">
-                    <p>Default</p>
+                    <p>{{ element.contreindication }}</p>
                 </div>
             </div>
         </section>

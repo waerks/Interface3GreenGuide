@@ -45,7 +45,6 @@ class ImportJsonCommand extends Command
         $io = new SymfonyStyle($input, $output);
 
         $filePath = $this->kernel->getProjectDir() . '/assets/json/db_greenguide.json';
-        // dd($filePath);
 
         if(!file_exists($filePath)){
             $io->error('Fichier JSON non trouvé.');
@@ -89,57 +88,96 @@ class ImportJsonCommand extends Command
 
         // Gérer l'Element
         foreach ($data as $itemData) {
-            $element = new Element();
-
-            // Propriétés de l'Element
-            $element->setNom($itemData['nom']);
-            $element->setNomScientifique($itemData['nomscientifique']);
-            $element->setFamille($itemData['famille']);
-            $element->setHauteur($itemData['hauteur']);
-            $element->setSol($itemData['sol']);
-
-            // Gérer TypeElement => Catégorie
-            $typeElement = $em->getRepository(TypeElement::class)->findOneBy(['nom' => $itemData['categorie']]);
+            $element = $em->getRepository(Element::class)->findOneBy(['nom' => $itemData['nom']]);
             
-            if(!$typeElement){
-                $typeElement = new TypeElement();
-                $typeElement->setNom($itemData['categorie']);
+            if(!$element){
 
-                $em->persist($typeElement);
+                $element = new Element();
+                
+                // Propriétés de l'Element
+                $element->setNom($itemData['nom']);
+                $element->setNomScientifique($itemData['nomscientifique']);
+                $element->setFamille($itemData['famille']);
+                $element->setHauteur($itemData['hauteur']);
+                $element->setSol($itemData['sol']);
+
+                // Gérer TypeElement => Catégorie
+                $typeElement = $em->getRepository(TypeElement::class)->findOneBy(['nom' => $itemData['categorie']]);
+                
+                if(!$typeElement){
+                    $typeElement = new TypeElement();
+                    $typeElement->setNom($itemData['categorie']);
+
+                    $em->persist($typeElement);
+                }
+
+                $element->addTypeElement($typeElement);
+
+                $element->setImage($itemData['image']);
+                $element->setResume($itemData['resume']);
+
+                // Gérer les Etapes
+                foreach ($typeEtapeNames as $type => $typeEtape) {
+                    if (isset($itemData[strtolower($type)])) {
+                        $etapeData = $itemData[strtolower($type)];
+
+                        // Créer ou récupérer l'étape
+                        $etape = new Etape();
+                        $etape->setElement($element);
+                        $etape->setMois($etapeData['mois']);
+                        $etape->setPeriode($etapeData['periode']);
+                        $etape->setInstructions($etapeData['instruction']);
+
+                        // Liaison avec TypeEtape
+                        $etape->setTypeEtape($typeEtape);
+
+                        $em->persist($etape);
+                    }
+                }
+
+                $element->setEntretien($itemData['entretien']);
+                $element->setRotationDesCultures($itemData['rotationdescultures']);
+                $element->setConservation($itemData['conservation']);
+                $element->setBenefices($itemData['benefices']);
+                $element->setContreIndication($itemData['contreindication']);
+                $element->setInformationsNutrtionnelles($itemData['informationsnutritionnelles']);
+
+                $em->persist($element);
             }
 
-            $element->addTypeElement($typeElement);
+            // Gérer les plantes ennemies
+            if (!empty($itemData['plantesenemies'])) {
+                foreach ($itemData['plantesenemies'] as $ennemieNom) {
 
-            $element->setImage($itemData['image']);
-            $element->setResume($itemData['resume']);
+                    // Récupérer l'élément ennemi
+                    $planteEnnemie = $em->getRepository(Element::class)->findOneBy(['nom' => $ennemieNom]);
+                    
+                    // Vérifier si l'élément ennemi existe
+                    if ($planteEnnemie) {
+                        // Ajouter la relation d'ennemi
+                        $element->addEnnemi($planteEnnemie);
+                        $planteEnnemie->addElementsEnnemi($element); // Relation bidirectionnelle
 
-            // Gérer les Etapes
-            foreach ($typeEtapeNames as $type => $typeEtape) {
-                if (isset($itemData[strtolower($type)])) {
-                    $etapeData = $itemData[strtolower($type)];
-
-                    // Créer ou récupérer l'étape
-                    $etape = new Etape();
-                    $etape->setElement($element);
-                    $etape->setMois($etapeData['mois']);
-                    $etape->setPeriode($etapeData['periode']);
-                    $etape->setInstructions($etapeData['instruction']);
-
-                    // Liaison avec TypeEtape
-                    $etape->setTypeEtape($typeEtape);
-
-                    $em->persist($etape);
+                        // $em->persist($planteEnnemie);
+                    }
                 }
             }
+        
+            // Gérer les plantes amies
+            if (!empty($itemData['plantesamies'])) {
+                foreach ($itemData['plantesamies'] as $amieNom) {
+                    // Récupérer l'élément ami
+                    $planteAmie = $em->getRepository(Element::class)->findOneBy(['nom' => $amieNom]);
+                    // Vérifier si l'élément ami existe
+                    if ($planteAmie) {
+                        // Ajouter la relation d'ami
+                        $element->addAmi($planteAmie);
+                        $planteAmie->addElementsAmi($element); // Relation bidirectionnelle
 
-            $element->setEntretien($itemData['entretien']);
-            $element->setRotationDesCultures($itemData['rotationdescultures']);
-            $element->setConservation($itemData['conservation']);
-            $element->setBenefices($itemData['benefices']);
-            $element->setContreIndication($itemData['contreindication']);
-            $element->setInformationsNutrtionnelles($itemData['informationsnutritionnelles']);
-
-            $em->persist($element);
+                        // $em->persist($planteAmie);
+                    }
+                }
+            }
         }
 
         $em->flush();

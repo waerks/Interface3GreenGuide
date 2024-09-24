@@ -53,7 +53,7 @@ class Element
     private ?string $benefices = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    private ?string $informationsNutrtionnelles = null;
+    private ?string $informationsNutritionnelles = null;
 
     /**
      * @var Collection<int, Recette>
@@ -261,12 +261,12 @@ class Element
 
     public function getInformationsNutrtionnelles(): ?string
     {
-        return $this->informationsNutrtionnelles;
+        return $this->informationsNutritionnelles;
     }
 
     public function setInformationsNutrtionnelles(string $informationsNutrtionnelles): static
     {
-        $this->informationsNutrtionnelles = $informationsNutrtionnelles;
+        $this->informationsNutritionnelles = $informationsNutrtionnelles;
 
         return $this;
     }
