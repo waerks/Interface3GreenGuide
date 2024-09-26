@@ -55,17 +55,20 @@
                     <a href="{{ path('inscription') }}">S'inscire</a>
                 </li>
                 <li id="navBorderBtn">
-                    <a href="">Se connecter</a>
+                    <a href="{{ path('connexion') }}">Se connecter</a>
                 </li>
 
-                <li id="profilBtn">
-            <a href="">
-                <span><img src="{{ asset('build/images/avatars/default.png') }}" alt="Profil"></span>Anaïs</a>
-        </li>
+                {% if is_granted ("ROLE_USER") %}
+                
+                    <li id="profilBtn">
+                        <a href="">
+                            <span><img src="{{ asset('build/images/avatars/default.png') }}" alt="Profil"></span>Anaïs</a>
+                    </li>
 
-        <li id="navBorderBtn">
-            <a href="">Déconnexion</a>
-        </li>
+                    <li id="navBorderBtn">
+                        <a href="">Déconnexion</a>
+                    </li>
+                {% endif %}
             </ul>
         </nav>
         
