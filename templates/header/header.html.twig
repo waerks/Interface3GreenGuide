@@ -51,12 +51,6 @@
             </ul>
             <ul>
 
-                <li id="navFullBtn">
-                    <a href="{{ path('inscription') }}">S'inscire</a>
-                </li>
-                <li id="navBorderBtn">
-                    <a href="{{ path('connexion') }}">Se connecter</a>
-                </li>
 
                 {% if is_granted ("ROLE_USER") %}
                 
@@ -66,7 +60,14 @@
                     </li>
 
                     <li id="navBorderBtn">
-                        <a href="">Déconnexion</a>
+                        <a href="{{ path('deconnexion') }}">Déconnexion</a>
+                    </li>
+                {% else %}
+                    <li id="navFullBtn">
+                        <a href="{{ path('inscription') }}">S'inscire</a>
+                    </li>
+                    <li id="navBorderBtn">
+                        <a href="{{ path('connexion') }}">Se connecter</a>
                     </li>
                 {% endif %}
             </ul>
