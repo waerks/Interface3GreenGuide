@@ -52,11 +52,11 @@
             <ul>
 
 
-                {% if is_granted ("ROLE_USER") %}
+                {% if is_granted ("ROLE_USER") and app.user %}
                 
                     <li id="profilBtn">
-                        <a href="">
-                            <span><img src="{{ asset('build/images/avatars/default.png') }}" alt="Profil"></span>Anaïs</a>
+                        <a href="{{ path('profil') }}">
+                            <span><img src="{{ asset('build/images/avatars/' ~ app.user.avatar) }}" alt="Profil"></span>{{app.user.pseudo}}</a>
                     </li>
 
                     <li id="navBorderBtn">

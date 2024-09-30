@@ -1,0 +1,55 @@
+{% include "header/header.html.twig" %}
+
+<section>
+    <div class="container">
+        <section id="recetteATitre">
+            <div class="divTitre">
+                <h2>Souhaitez-vous modifier votre profil ?</h2>
+            </div>
+        </section>
+        <section id="aideAjout">
+            <form action="" method="post">
+                <h3>Ça se passse ici !</h3>
+                <hr>
+                
+                <label for="nom">Nom</label>
+                <input type="text" name="recetteajout" id="input" placeholder="{{app.user.nom}}">
+                <label for="prenom">Prénom</label>
+                <input type="text" name="recetteajout" id="input" placeholder="{{app.user.prenom}}">
+                <label for="pseudo">Pseudo</label>
+                <input type="text" name="recetteajout" id="input" placeholder="{{app.user.pseudo}}">
+                <label for="mail">Adresse mail</label>
+                <input type="text" name="recetteajout" id="input" placeholder="{{app.user.email}}">
+                
+                <button type="submit" id="mainBtn">
+                    <a href="./front-page.php">Modifier</a>
+                </button>
+            </form>
+        </section>
+        <section id="divAllRecette">
+            <div class="contient">
+                <h3>Toutes vos recettes postées</h3>
+                <h3>Vous n'avez encore posté</h3>
+                <div class="rienPoster">
+                    <img src="{{ asset('build/images/images/rien.png') }}" alt="Rien">
+                </div>
+                <div class="allPost">
+                    <a id="cardRecette" href="./page-recetteDetail.php">
+                        <span><img src="./images/images/default.jpg" alt=""></span>
+                        <div class="cardInfo">
+                            <div class="divLeft">
+                                <h4>Tarte aux pommes</h4>
+                            </div>
+                            <div class="divRight">
+                                <p>52</p>
+                                <span><img src="{{ asset('build/images/logo/icons/coeur.png') }}" alt="Like"></span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+</section>
+
+{% include "footer/footer.html.twig" %}
