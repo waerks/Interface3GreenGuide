@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Recette;
+use App\Form\RecetteType;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
@@ -44,29 +45,20 @@ class RecetteController extends AbstractController
         $user = $this->getUser();
         $recette->setUser($user);
 
-        $form = $this->createFormBuilder($recette)
-            ->add('nom')
-            ->add('conseil')
-            ->add('nombreDePersonnes')
-            ->add('tempsDePreparation')
-            ->add('tempsDeCuisson')
-            ->getForm();
-
+        $form = $this->createForm(RecetteType::class, $recette);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() /*&& $form->isValid()*/) {
-            dd($form->getData());
+            // dd($form->getData());
             // Récupérer les ingrédients et les étapes du formulaire
-            $ingredients = $request->request->get('ajoutIngre');
-            $etapes = $request->request->get('etape');
 
-            if ($ingredients) {
-                $recette->setIngredients($ingredients);
-            }
+            // if ($ingredients) {
+            //     $recette->setIngredients($ingredients);
+            // }
 
-            if ($etapes) {
-                $recette->setEtapes($etapes);
-            }
+            // if ($etapes) {
+            //     $recette->setEtapes($etapes);
+            // }
 
             /** @var UploadedFile $file */
 
