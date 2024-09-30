@@ -1131,6 +1131,12 @@
                     justify-content: center;
                     align-items: flex-start;
 
+                    .choix {
+                        width: 60%;
+                        display: flex;
+                        gap: 0 30px;
+                    }
+
                     input {
                         width: 100%;
                     }
@@ -1158,7 +1164,7 @@
                         margin-top: 30px;
                     }
 
-                    button:last-child {
+                    #mainBtn:last-child {
                         margin-top: 60px;
                     }
 

@@ -16,36 +16,35 @@
         <section id="aideAjout">
             <form action="" method="post">
                 {% if error %}
-                    <p>Vous n'avez pas encore de compte.</p>
-                    <h3>Souhaitez-vous vous inscrire ?</h3>
+                    <h3>Vosu n'avez pas encore de compte. Souhaitez-vous vous inscrire ?</h3>
                     <hr>
                     <button type="submit" id="mainBtn">
                         <a href="{{ path('inscription') }}">S'inscrire</a>
                     </button>
-
-                {% else %}
-
-                    {% if app.user %}
-                        <h3>Souhaitez-vous vous déconnecter ?</h3>
-
-                    {% else %}
-                        <h3>Ça se passse ici !</h3>
-                        <hr>
-
-                        <label for="mail">Adresse mail</label>
-                        <input type="email" value="{{ last_username }}" name="_username" id="username" class="form-control input" autocomplete="email" required autofocus>
-                        <label for="mdp">Mot de passe</label>
-                        <input type="password" name="_password" id="password" class="form-control input" autocomplete="current-password" required>
-
-                        <input type="hidden" name="_csrf_token"
-                            value="{{ csrf_token('authenticate') }}"
-                        >
-                        
-                        <button type="submit" id="mainBtn" class="btn btn-lg btn-primary">Se connecter</button>
-                    {% endif %}
-                
                 {% endif %}
 
+                {% if app.user %}
+                    <h3>Souhaitez-vous vous déconnecter ?</h3>
+                    <hr>
+                    <button type="submit" id="mainBtn">
+                        <a href="{{ path('deconnexion') }}">Se déconnecter</a>
+                    </button>
+
+                {% else %}
+                    <h3>Ça se passse ici !</h3>
+                    <hr>
+
+                    <label for="mail">Adresse mail</label>
+                    <input type="email" value="{{ last_username }}" name="_username" id="username" class="form-control input" autocomplete="email" required autofocus>
+                    <label for="mdp">Mot de passe</label>
+                    <input type="password" name="_password" id="password" class="form-control input" autocomplete="current-password" required>
+
+                    <input type="hidden" name="_csrf_token"
+                        value="{{ csrf_token('authenticate') }}"
+                    >
+                    
+                    <button type="submit" id="mainBtn" class="btn btn-lg btn-primary">Se connecter</button>
+                {% endif %}
 
             </form>
         </section>
