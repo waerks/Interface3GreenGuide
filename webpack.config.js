@@ -33,7 +33,7 @@ Encore
     // Copier les avatars sans nettoyage
     .copyFiles({
         from: './assets/images/avatars', // Dossier source
-        to: 'avatars/[path][name].[ext]', // Dossier destination (sans "build/")
+        to: '../uploads/avatars/[path][name].[ext]',  // En dehors de build
         pattern: /\.(png|jpg|jpeg|gif|svg)$/,
     });
 
