@@ -1,6 +1,5 @@
 {% include "header/header.html.twig" %}
 
-
 <section>
     <div class="container">
         <section id="recetteATitre">
@@ -9,46 +8,51 @@
             </div>
         </section>
         <section id="recetteAjout">
-            <form action="./page-recetteTraitement.php" method="POST" enctype="multipart/form-data">
-            <h3>Présentation</h3>
-            <hr>
-            <label for="name">Nom de votre recette</label>
-            <input type="text" name="name" id="input">
-            <label for="file">Photo de votre recette</label>
-            <input type="file" name="file" id="input">
-            <label for="conseil">Votre conseil</label>
-            <input type="text" name="conseil" id="input">
+            {{ form_start(form, {'attr': {'enctype': 'multipart/form-data'}}) }}
+                <h3>Présentation</h3>
+                <hr>
+                {{ form_label(form.nom, 'Nom de votre recette') }}
+                {{ form_widget(form.nom, {'attr': {'class': 'input'}}) }}
+                
+                <label for="file">Photo de votre recette</label>
+                <input type="file" name="file" id="file" class="input" required>
+                
+                {{ form_label(form.conseil, 'Votre conseil') }}
+                {{ form_widget(form.conseil, {'attr': {'class': 'input'}}) }}
 
-            <h3>Ingrédients</h3>
-            <hr>
-            <label for="nbre">Nombre de personnes</label>
-            <input type="number" name="nbre" id="input">
-            <div id="ingredientsContainer">
-                <label for="ajoutIngre[]">Ajouter des ingrédients</label>
-                <input type="text" name="ajoutIngre[]" id="input">
-            </div>
-            <button type="button" onclick="addIngredient()">Ajouter un ingrédient</button>
+                <h3>Ingrédients</h3>
+                <hr>
+                {{ form_label(form.nombreDePersonnes, 'Nombre de personnes') }}
+                {{ form_widget(form.nombreDePersonnes, {'attr': {'class': 'input'}}) }}
+                <div id="ingredientsContainer">
+                    <label for="ingre">Ajouter des ingrédients</label>
+                    <div>
+                        <input type="text" name="form[ajoutIngre[]]" class="input" id="ingre">
+                    </div>
+                </div>
+                <button type="button" class="addIngredientBtn" id="secondBtn">Ajouter un ingrédient</button>
 
-            <h3>Pratique</h3>
-            <hr>
-            <label for="Tprepa">Temps de préparation (minutes)</label>
-            <input type="number" name="Tprepa" id="input">
-            <label for="Tcuisson">Temps de cuisson (minutes)</label>
-            <input type="number" name="Tcuisson" id="input">
+                <h3>Pratique</h3>
+                <hr>
+                {{ form_label(form.tempsDePreparation, 'Temps de préparation (minutes)') }}
+                {{ form_widget(form.tempsDePreparation, {'attr': {'class': 'input'}}) }}
+                {{ form_label(form.tempsDeCuisson, 'Temps de cuisson (minutes)') }}
+                {{ form_widget(form.tempsDeCuisson, {'attr': {'class': 'input'}}) }}
 
-            <h3>Préparation</h3>
-            <hr>
-            <div id="etapesContainer">
-                <label for="etape[]">Description de l'étape</label>
-                <textarea name="etape[]" id="etape"></textarea>
-            </div>
-            <button type="button" onclick="addEtape()">Ajouter une étape</button>
+                <h3>Préparation</h3>
+                <hr>
+                <div id="etapesContainer">
+                    <label for="etape">Description de l'étape</label>
+                    <div>
+                        <textarea name="etape[]" class="input" id="etape"></textarea>
+                    </div>
+                </div>
+                <button type="button" class="addEtapeBtn" id="secondBtn">Ajouter une étape</button>
 
-            <button type="submit" id="mainBtn">Poster</button>
-            </form>
+                <button type="submit" id="mainBtn">Poster</button>
+            {{ form_end(form) }}
         </section>
     </div>
 </section>
-
 
 {% include "footer/footer.html.twig" %}

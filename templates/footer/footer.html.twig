@@ -1,2 +1,8 @@
+        {# *** JAVASCRIPT *** #}
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+            {# 'app' fait référence à l'entrée JavaScript configurée dans webpack.config.js #}
+            {% block importmap %}{{ importmap('app') }}{% endblock %}
+        {% endblock %}
     </body>
 </html>
