@@ -1138,36 +1138,34 @@
                         gap: 0 30px;
                     }
 
-                    #ingredientsContainer, #etapesContainer {
+                    .ingredients, .etapes {
                         width: 100%;
 
-                        div {
+                        .ingredient-item, .etape-item {
                             width: 100%;
                             display: flex;
                             justify-content: center;
                             align-items: center;
                             gap: 20px;
-
-                            textarea {
-                                width: 100%;
-                                min-height: 150px;
-                            }
-
-                            .delete-btn {
-                                display: flex;
-                                justify-content: center;
-                                align-items: center;
-                                border: #153135 1px solid;
-                                border-radius: 50px;
+                            margin: 15px 0;
+    
+                            .remove {
                                 height: 35px;
                                 width: 35px;
-                                font-size: medium;
+                                border: 1px solid $secondary;
+                                border-radius: 30px;
+                                margin-top: 0;
+                                cursor: pointer;
                             }
                         }
                     }
 
-                    input {
+                    input, textarea {
                         width: 100%;
+                    }
+
+                    textarea {
+                        min-height: 150px;
                     }
 
                     input[type="file"] {

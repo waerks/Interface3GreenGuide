@@ -48,17 +48,7 @@ class RecetteController extends AbstractController
         $form = $this->createForm(RecetteType::class, $recette);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() /*&& $form->isValid()*/) {
-            // dd($form->getData());
-            // Récupérer les ingrédients et les étapes du formulaire
-
-            // if ($ingredients) {
-            //     $recette->setIngredients($ingredients);
-            // }
-
-            // if ($etapes) {
-            //     $recette->setEtapes($etapes);
-            // }
+        if ($form->isSubmitted() && $form->isValid()) {
 
             /** @var UploadedFile $file */
 

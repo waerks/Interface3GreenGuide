@@ -34,7 +34,14 @@ class RecetteType extends AbstractType
             ])
             ->add('tempsDePreparation')
             ->add('tempsDeCuisson')
-            // ->add('etapes')
+            ->add('etapes', CollectionType::class, [
+                'entry_type' => TextType::class, // Or another field type
+                'allow_add' => true,
+                'allow_delete' => true,
+                'prototype' => true,  // Important for dynamic fields
+                'by_reference' => false,
+                'entry_options' => ['label' => 'Étape'],
+            ])
             ->add('user', EntityType::class, [
                 'class' => User::class,
                 'choice_label' => 'id',
