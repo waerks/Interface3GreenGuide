@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Entity\Recette;
 use App\Form\RecetteType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -38,8 +39,11 @@ class RecetteController extends AbstractController
 
         $recette = $this->doctrine->getRepository(Recette::class)->findOneBy(['nom' => $nom]);
 
+        $user = $this->doctrine->getRepository(User::class)->findOneBy(['nom' => $nom]);
+
         $vars = [
-            'recette' => $recette
+            'recette' => $recette,
+            'user' => $user,
         ];
 
         // dd($vars);
