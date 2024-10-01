@@ -1141,6 +1141,10 @@
                     .ingredients, .etapes {
                         width: 100%;
 
+                        #secondBtn {
+                            margin-top: 0px;
+                        }
+
                         .ingredient-item, .etape-item {
                             width: 100%;
                             display: flex;

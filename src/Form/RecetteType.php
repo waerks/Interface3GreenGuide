@@ -8,10 +8,11 @@ use App\Entity\Recette;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class RecetteType extends AbstractType
 {
@@ -19,7 +20,23 @@ class RecetteType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('image', FileType::class)
+            ->add('image', FileType::class, [
+                'label' => 'Image (PNG, JPEG)',
+                'required' => false,
+                'mapped' => false, // To avoid saving directly in the entity
+                'constraints' => [
+                    new File([
+                        'maxSize' => '5M',
+                        'mimeTypes' => [
+                            'image/png',
+                            'image/jpeg',
+                            'image/jpg',
+                        ],
+                        'mimeTypesMessage' => 'Veuillez uploader une image valide (PNG, JPEG)',
+                    ])
+                ],
+            ])
+            
             ->add('conseil')
             ->add('nombreDePersonnes')
             ->add('ingredients', CollectionType::class, [
@@ -44,7 +61,7 @@ class RecetteType extends AbstractType
             ])
             ->add('user', EntityType::class, [
                 'class' => User::class,
-                'choice_label' => 'id',
+                'choice_label' => 'pseudo',
             ])
             // ->add('element', EntityType::class, [
             //     'class' => Element::class,

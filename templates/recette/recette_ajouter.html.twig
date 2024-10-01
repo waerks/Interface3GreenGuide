@@ -8,7 +8,7 @@
             </div>
         </section>
         <section id="recetteAjout">
-            {{ form_start(form, {'attr': {'enctype': 'multipart/form-data'}}) }}
+		{{ form_start(form, { 'attr': {'enctype': 'multipart/form-data'} }) }}
             <h3>Présentation</h3>
             <hr>
             {{ form_label(form.nom, 'Nom de votre recette') }}
@@ -54,8 +54,9 @@
 				{% endfor %}
 			</div>
 
+			{{ form_widget (form._token) }}
             <button type="submit" id="mainBtn">Poster</button>
-            {{ form_end(form) }}
+            {{ form_end(form, {render_rest: false}) }}
         </section>
     </div>
 </section>

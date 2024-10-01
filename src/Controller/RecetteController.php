@@ -9,9 +9,9 @@ use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 class RecetteController extends AbstractController
 {
@@ -32,35 +32,54 @@ class RecetteController extends AbstractController
 
         return $this->render('recette/recette.html.twig', $vars);
     }
-    #[Route('/recette/detail', name: 'recette_detail')]
-    public function detail(): Response
+    #[Route('/recette/{nom}', name: 'recette_detail')]
+    public function detail(string $nom): Response
     {    
-        return $this->render('recette/recette_detail.html.twig');
+
+        $recette = $this->doctrine->getRepository(Recette::class)->findOneBy(['nom' => $nom]);
+
+        $vars = [
+            'recette' => $recette
+        ];
+
+        // dd($vars);
+
+        return $this->render('recette/recette_detail.html.twig', $vars);
     }
     #[IsGranted('ROLE_USER')]
     #[Route('/recette/poster', name: 'recette_ajouter')]
     public function ajouter(Request $request, EntityManagerInterface $entityManager): Response
     {
         $recette = new Recette();
-        $user = $this->getUser();
-        $recette->setUser($user);
+
 
         $form = $this->createForm(RecetteType::class, $recette);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        $user = $this->getUser();
+        $recette->setUser($user);
 
-            /** @var UploadedFile $file */
-
-            $file = $request->files->get('file');
-
+        if ($form->isSubmitted() ) {
+            // dd($form->getErrors());
+            // Gestion de l'upload de l'avatar
+            $file = $form->get('image')->getData();
             if ($file) {
-                $fileName = uniqid() . '.' . $file->guessExtension();
-
-                $file->move(
-                    $this->getParameter('kernel.project_dir') . '/public/build/images/photosRecette', // ou le paramètre que tu as défini
-                    $fileName
-                );
+                // Génère un nom unique pour l'avatar
+                $newFileName = uniqid().'.'.$file->guessExtension();
+        
+                // Déplace le fichier dans le répertoire de destination
+                try {
+                    $file->move(
+                        $this->getParameter('kernel.project_dir') . '/public/build/images/photosRecette', // ou le paramètre que tu as défini
+                        $newFileName
+                    );
+                    // Met à jour l'utilisateur avec le nouveau nom de fichier
+                    $recette->setImage($newFileName);
+                } catch (FileException $e) {
+                    // Gérer l'exception en cas d'échec de déplacement
+                    $this->addFlash('error', 'L\'upload de l\'image a échoué.');
+                    return $this->redirectToRoute('recette_ajouter');
+                }
             }
 
             $entityManager->persist($recette);

@@ -6,7 +6,7 @@
         <section id="recetteFiltre">
             <h2>Les recettes</h2>
             <div class="divRecherche">
-                <input type="text" name="newsletters" id="input">
+                <input type="text" name="newsletters" class="input">
                 <button type="submit" id="mainBtn">
                     <a href="#rechercher">Rechercher</a>
                 </button>
@@ -21,13 +21,13 @@
             </div>
         </section>
         <section id="recette">
-            {# {% for item in recette %} #}
-                <a id="cardRecette" href="{{ path('recette_detail')}}">
-                    <span><img src="{{ asset('./images/images/default.png')}}" alt=""></span>
+            {% for item in recette %}
+                <a id="cardRecette" href="{{ path('recette_detail', {'nom': item.nom})}}">
+                    <span><img src="{{ asset('/build/images/photosRecette/' ~ item.image)}}" alt="{{item.nom}}"></span>
                     <div class="cardInfo">
                         <div class="divLeft">
-                            <h4>Tarte</h4>
-                            <p>nanais._</p>
+                            <h4>{{item.nom}}</h4>
+                            <p>{{item.user.pseudo}}</p>
                             </div>
                         <div class="divRight">
                             <p>52</p>
@@ -35,7 +35,7 @@
                         </div>
                     </div>
                 </a>   
-            {# {% endfor %} #}
+            {% endfor %}
         </section>
     </div>
 </section>
