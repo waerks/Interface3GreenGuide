@@ -13,13 +13,13 @@
                 <hr>
                 
                 <label for="nom">Nom</label>
-                <input type="text" name="recetteajout" id="input" placeholder="{{app.user.nom}}">
+                <input type="text" name="recetteajout" class="input" placeholder="{{app.user.nom}}">
                 <label for="prenom">Prénom</label>
-                <input type="text" name="recetteajout" id="input" placeholder="{{app.user.prenom}}">
+                <input type="text" name="recetteajout" class="input" placeholder="{{app.user.prenom}}">
                 <label for="pseudo">Pseudo</label>
-                <input type="text" name="recetteajout" id="input" placeholder="{{app.user.pseudo}}">
+                <input type="text" name="recetteajout" class="input" placeholder="{{app.user.pseudo}}">
                 <label for="mail">Adresse mail</label>
-                <input type="text" name="recetteajout" id="input" placeholder="{{app.user.email}}">
+                <input type="text" name="recetteajout" class="input" placeholder="{{app.user.email}}">
                 
                 <button type="submit" id="mainBtn">
                     <a href="./front-page.php">Modifier</a>
@@ -28,17 +28,21 @@
         </section>
         <section id="divAllRecette">
             <div class="contient">
-                <h3>Toutes vos recettes postées</h3>
+            {% if recettes is empty %}
                 <h3>Vous n'avez encore posté</h3>
                 <div class="rienPoster">
                     <img src="{{ asset('build/images/images/rien.png') }}" alt="Rien">
                 </div>
+                
+            {% else %}
+                <h3>Toutes vos recettes postées</h3>
                 <div class="allPost">
-                    <a id="cardRecette" href="./page-recetteDetail.php">
-                        <span><img src="./images/images/default.jpg" alt=""></span>
+                {% for recette in recettes %}
+                    <a id="cardRecette" href="{{ path('recette_detail', {'nom': recette.nom}) }}">
+                        <span><img src="{{ asset('build/images/photosRecette/' ~ recette.image) }}" alt=""></span>
                         <div class="cardInfo">
                             <div class="divLeft">
-                                <h4>Tarte aux pommes</h4>
+                                <h4>{{recette.nom}}</h4>
                             </div>
                             <div class="divRight">
                                 <p>52</p>
@@ -46,7 +50,10 @@
                             </div>
                         </div>
                     </a>
+                    
+                {% endfor %}
                 </div>
+            {% endif %}
             </div>
         </section>
     </div>
