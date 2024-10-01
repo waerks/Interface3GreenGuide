@@ -22,6 +22,7 @@ class RecetteController extends AbstractController
     {
         $this->doctrine = $doctrine;
     }
+
     #[Route('/recette', name: 'recette')]
     public function index(): Response
     {
@@ -33,7 +34,8 @@ class RecetteController extends AbstractController
 
         return $this->render('recette/recette.html.twig', $vars);
     }
-    #[Route('/recette/{nom}', name: 'recette_detail')]
+
+    #[Route('/recette/detail/{nom}', name: 'recette_detail')]
     public function detail(string $nom): Response
     {    
 
@@ -46,10 +48,9 @@ class RecetteController extends AbstractController
             'user' => $user,
         ];
 
-        // dd($vars);
-
         return $this->render('recette/recette_detail.html.twig', $vars);
     }
+
     #[IsGranted('ROLE_USER')]
     #[Route('/recette/poster', name: 'recette_ajouter')]
     public function ajouter(Request $request, EntityManagerInterface $entityManager): Response

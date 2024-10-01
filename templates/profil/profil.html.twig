@@ -27,15 +27,16 @@
             </form>
         </section>
         <section id="divAllRecette">
-            <div class="contient">
             {% if recettes is empty %}
+                <h3>Vous n'avez encore posté</h3>
                 <h3>Vous n'avez encore posté</h3>
                 <div class="rienPoster">
                     <img src="{{ asset('build/images/images/rien.png') }}" alt="Rien">
                 </div>
                 
             {% else %}
-                <h3>Toutes vos recettes postées</h3>
+            <h3>Toutes vos recettes postées</h3>
+            <div class="contient">
                 <div class="allPost">
                 {% for recette in recettes %}
                     <a id="cardRecette" href="{{ path('recette_detail', {'nom': recette.nom}) }}">

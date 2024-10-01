@@ -9,6 +9,7 @@
     body {
         margin: auto 0;
         background-color: $background;
+        padding-bottom: 50px;
     }
 
     // ASSETS
@@ -1335,23 +1336,30 @@
                 align-items: center;
                 flex-direction: column;
 
+                .rienPoster {
+                    width: 100%;
+                    height: 500px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    img {
+                        height: 80%;
+                        width: 80%;
+                        object-fit: contain;
+                        object-position: center;
+                    }
+                }
 
                 .contient {
                     width: 60%;
 
-                    .rienPoster {
+                    .allPost {
                         width: 100%;
-                        height: 500px;
                         display: flex;
                         justify-content: center;
                         align-items: center;
-
-                        img {
-                            height: 80%;
-                            width: 80%;
-                            object-fit: contain;
-                            object-position: center;
-                        }
+                        gap: 20px;
                     }
                 }
             }
